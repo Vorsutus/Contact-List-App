@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ContactsApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ContactsApp.Views.DataEntryPage">
+
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="10">
+            <StackLayout.BindingContext>
+                <local:ContactsViewModel/>
+            </StackLayout.BindingContext>
+
+            <Label Text="First Name: "
+                   FontSize="Large"/>
+            <Entry Placeholder="Enter First Name"
+                   x:Name="Fname"
+                   Text="{Binding Contact.FirstName}"
+                   TextColor="Red"/>
+            
+            <Label Text="Last Name: "
+                   FontSize="Large"/>
+            <Entry Placeholder="Enter Last Name"
+                   x:Name="Lname"
+                   Text="{Binding Contact.LastName}"
+                   TextColor="Red"/>
+            
+            <Label Text="Contact Type: "
+                   FontSize="Large"/>
+            <Entry Placeholder="Enter Contact Type"
+                   x:Name="Ctype"
+                   Text="{Binding Contact.ContactType}"
+                   TextColor="DarkGray"/>
+            
+            <Button Command="{Binding AddContactCommand}"
+                    Text="Save Contact"/>
+            
+            <Button Text="Return"
+                    Clicked="Return_Clicked"/>
+
+        </StackLayout>
+        
+        
+    </ContentPage.Content>
+</ContentPage>

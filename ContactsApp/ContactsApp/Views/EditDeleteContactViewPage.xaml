@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:ContactsApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="ContactsApp.Views.EditDeleteContactViewPage">
+    
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10" Spacing="10">
+            <StackLayout.BindingContext>
+                <local:ContactsViewModel/>
+            </StackLayout.BindingContext>
+
+            <Label  Text="First Name: "
+                    FontSize="Large"/>
+            <Entry  Placeholder="Enter First Name"
+                    x:Name="Fname"
+                    Text="{Binding SelectedContact.FirstName}"
+                    TextColor="Red"/>
+
+            <Label  Text="Last Name: "
+                    FontSize="Large"/>
+            <Entry  Placeholder="Enter Last Name"
+                    x:Name="Lname"
+                    Text="{Binding SelectedContact.LastName}"
+                    TextColor="Red"/>
+
+            <Label  Text="Contact Type: "
+                    FontSize="Large"/>
+            <Entry  Placeholder="Enter Contact Type"
+                    x:Name="Ctype"
+                    Text="{Binding SelectedContact.ContactType}"
+                    TextColor="DarkGray"/>
+
+            <Button Command="{Binding SaveEditCommand}"
+                    Text="Save Edit"
+                    Clicked="SaveButton_Clicked"/>
+
+            <Button Command="{Binding CancelEditCommand}"
+                    Text="Cancel Edit"
+                    Clicked="CancelButton_Clicked"/>
+
+            <Button Command="{Binding DeleteContactCommand}"
+                    Text="Delete Contact"
+                    Clicked="DeleteButton_Clicked"/>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

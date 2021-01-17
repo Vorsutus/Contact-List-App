@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:ContactsApp.ViewModels"
+             x:Class="ContactsApp.Views.ContactsListViewPage">
+    
+    <ContentPage.BindingContext>
+        <local:ContactsViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <StackLayout>
+            <Label  Text="Contacts List"
+                    FontSize="40"
+                    FontAttributes="Bold,Italic"
+                    HorizontalOptions="Center" />
+
+            <ListView x:Name="contactsListView"
+                      ItemsSource="{Binding Contacts}"
+                      SelectedItem="{Binding SelectedContact}" >
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding FullName}"
+                                  TextColor="Red"
+                                  Detail="{Binding ContactType}"
+                                  DetailColor="DarkGray"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <Button HorizontalOptions="FillAndExpand"
+                    Text="ADD CONTACT"
+                    Clicked="AddContact_Clicked"/>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
